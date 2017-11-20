@@ -221,7 +221,7 @@ $record->save();
 else 
     echo "<h3>No record found </h3>";
 
-$new_account = accounts::findOne(31);
+$new_account = accounts::findOne(4);
 if($new_account != null){
     $new_account->delete();
     $findall_accounts = accounts::findAll();
@@ -258,7 +258,7 @@ if($new_account != null){
 else
     echo "<h1>No record found. Check if the record has been deleted already</h1>";
 
-$record = todos::findOne(10);
+$record = todos::findOne(4);
 if($record != null){
     $record->delete();
     $all_todos = todos::findAll();
