@@ -24,9 +24,10 @@ $findone_account = accounts::findOne(13);
 $findall_todos = todos::findAll();
 $findone_todo = todos::findOne(1);
 ?>
-
+<html>
+<link rel='stylesheet' href='styles.css'>
 <h1>Select all records : Accounts</h1>
-<table border="0">
+<table border="1">
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
@@ -43,7 +44,7 @@ $findone_todo = todos::findOne(1);
 
 <h1>Select One Record : Accounts </h1>
 <p> Selected id: 1 </p>
-<table border="0">
+<table border="1">
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
@@ -57,7 +58,7 @@ $findone_todo = todos::findOne(1);
 <hr>
 
 <h1>Select all records : Todos</h1>
-<table border="0">
+<table border="1">
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
@@ -72,8 +73,8 @@ $findone_todo = todos::findOne(1);
 
 <h1>Select one records : Todos</h1>
 <p> Selected id: 1 </p>
-<table border="0">
-    <tr><th>Select one todo record</th></tr>
+<table border="1">
+    
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
             todos::printHeaders($findone_todo);
@@ -100,7 +101,7 @@ $findall_accounts = accounts::findAll();
 <h1>Select all records with newly added record: Accounts</h1>
 <p> Please find newly added record at the last</p>
 
-<table border="0">
+<table border="1">
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
@@ -129,7 +130,7 @@ $all_todos = todos::findAll();
 
 <h1>Select all records with newly added record: Todos</h1>
 <p> Please find newly added record at the last</p>
-<table border="0">
+<table border="1">
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
@@ -141,22 +142,22 @@ $all_todos = todos::findAll();
     todos::printAll($findall_todos);
 ?>
 
-<hr>
+
 <?php
 $new_account = accounts::findOne(13);
 if($new_account != null)
 {    
 ?>
-
+<hr>
 <h1>Before Accounts Update </h1>
-<table border="0">
+<table border="1">
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
             accounts::printHeaders($new_account);
         ?>
     </tr>
-    <hr>
+    
 
 <?php 
     accounts::printOne($new_account);
@@ -165,34 +166,37 @@ $new_account->email='new@gmail.com';
 $new_account->save();
 
 ?>
+<hr>
 <h1>After Accounts Update </h1>
-<table border="0">
+<table border="1">
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
             accounts::printHeaders($new_account);
         ?>
     </tr>
-<hr>
+
 <?php 
     accounts::printOne($new_account);
 }
 else 
     echo "<h3>No record found</h3>";
-
+?>
+<hr>
+<?php
 $record=todos::findOne(4);
 if($record != null){
 ?>
 
 <h1>Before Todos Update </h1>
-<table border="0">
+<table border="1">
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
             todos::printHeaders($record);
         ?>
     </tr>
-<hr>
+
 <?php 
     todos::printOne($record);
 
@@ -200,16 +204,17 @@ $record->isdone=1;
 $record->save();
 
 ?>
+<hr>
 <h1>After Todos Update </h1>
-<table border="0">
-<table border="0">
+<table border="1">
+
     
     <tr COLSPAN=2 BGCOLOR="#f2dacd">
         <?php
             todos::printHeaders($record);
         ?>
     </tr>
-<hr>
+
 <?php 
     todos::printOne($record);
 }
@@ -221,9 +226,10 @@ if($new_account != null){
     $new_account->delete();
     $findall_accounts = accounts::findAll();
     ?>
+    <hr>
     <h1>Before Accounts Delete </h1>
-	<table border="0">
-    <table border="0">
+	<table border="1">
+ 
         
         <tr COLSPAN=2 BGCOLOR="#f2dacd">
             <?php
@@ -238,7 +244,7 @@ if($new_account != null){
     ?>
 <hr>
     <h1>After Accounts Delete </h1>
-    <table border="0">
+    <table border="1">
         
         <tr COLSPAN=2 BGCOLOR="#f2dacd">
             <?php
@@ -259,7 +265,7 @@ if($record != null){
     ?>
     <hr>
     <h1>Before Todos Delete </h1>
-    <table border="0">
+    <table border="1">
         
         <tr COLSPAN=2 BGCOLOR="#f2dacd">
             <?php
@@ -273,7 +279,7 @@ if($record != null){
     ?>
     <hr>
     <h1>After Todos Delete </h1>
-    <table border="0">
+    <table border="1">
         <tr><th>After deleting in Todos</th></tr>
         <tr COLSPAN=2 BGCOLOR="#f2dacd">
             <?php

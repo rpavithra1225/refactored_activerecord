@@ -18,7 +18,7 @@ class dbConn{
             // assign PDO object to db variable
             self::$db = new PDO( 'mysql:host=' . CONNECTION .';dbname=' . DATABASE, USERNAME, PASSWORD );
             self::$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            echo "Connected successfully <br/>";
+            //echo "Connected successfully <br/>";
         }
         catch (PDOException $e) {
             //Output error - would normally log this to error file rather than output to user.
