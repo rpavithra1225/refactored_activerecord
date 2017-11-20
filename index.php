@@ -19,33 +19,33 @@ class Manage {
 
 spl_autoload_register(array('Manage', 'autoload'));
 
-$all_accounts = accounts::findAll();
-$one_account = accounts::findOne(1);
-$all_todos = todos::findAll();
-$one_todo = todos::findOne(1);
+$findall_accounts = accounts::findAll();
+$findone_account = accounts::findOne(1);
+$findall_todos = todos::findAll();
+$findone_todo = todos::findOne(1);
 ?>
 <table border="0">
     <tr><th>Select all Account records</th></tr>
     <tr COLSPAN=2 BGCOLOR="#55ff00">
         <?php
-            accounts::printHeaders($all_accounts[0]);
+            accounts::printHeaders($findall_accounts[0]);
         ?>
     </tr>
 
 <?php 
-    accounts::printAll($all_accounts);
+    accounts::printAll($findall_accounts);
        
 ?>
 <table border="0">
     <tr><th>Select One Account record </th></tr>
     <tr COLSPAN=2 BGCOLOR="#55ff00">
         <?php
-            accounts::printHeaders($one_account);
+            accounts::printHeaders($findone_account);
         ?>
     </tr>
 
 <?php 
-    accounts::printOne($one_account); 
+    accounts::printOne($findone_account); 
 ?>
 <table border="0">
     <tr><th>Select all Todos records</th></tr>
@@ -62,12 +62,12 @@ $one_todo = todos::findOne(1);
     <tr><th>Select one todo record</th></tr>
     <tr COLSPAN=2 BGCOLOR="#55ff00">
         <?php
-            todos::printHeaders($one_todo);
+            todos::printHeaders($findone_todo);
         ?>
     </tr>
 
 <?php 
-    todos::printOne($one_todo);
+    todos::printOne($findone_todo);
 
 
 $new_account = new account();
@@ -80,18 +80,18 @@ $new_account->birthday= '1993-03-06';
 $new_account->gender = 'female';
 $new_account->password = '1234';
 $new_account->save();
-$all_accounts = accounts::findAll();
+$findall_accounts = accounts::findAll();
 ?>
 <table border="0">
     <tr><th>New Insterted record is at the bottom</th></tr>
     <tr COLSPAN=2 BGCOLOR="#55ff00">
         <?php
-            accounts::printHeaders($all_accounts[0]);
+            accounts::printHeaders($findall_accounts[0]);
         ?>
     </tr>
 
 <?php 
-    accounts::printAll($all_accounts);
+    accounts::printAll($findall_accounts);
 
 $record = new todo();
 $record->id = '';
@@ -108,12 +108,12 @@ $all_todos = todos::findAll();
     <tr><th>Newly Insterted record is at the bottom</th></tr>
     <tr COLSPAN=2 BGCOLOR="#55ff00">
         <?php
-            todos::printHeaders($all_todos[0]);
+            todos::printHeaders($findall_todos[0]);
         ?>
     </tr>
 
 <?php 
-    todos::printAll($all_todos);
+    todos::printAll($findall_todos);
 
 $new_account = accounts::findOne(9);
 if($new_account != null)
@@ -183,31 +183,31 @@ else
 $new_account = accounts::findOne(31);
 if($new_account != null){
     $new_account->delete();
-    $all_accounts = accounts::findAll();
+    $findall_accounts = accounts::findAll();
     ?>
     <table border="0">
         <tr><th>Before deleting in Accounts</th></tr>
         <tr COLSPAN=2 BGCOLOR="#55ff00">
             <?php
-                accounts::printHeaders($all_accounts[0]);
+                accounts::printHeaders($findall_accounts[0]);
             ?>
         </tr>
 
     <?php 
-        accounts::printAll($all_accounts);
+        accounts::printAll($findall_accounts);
 
-    $all_accounts = accounts::findAll();
+    $findall_accounts = accounts::findAll();
     ?>
     <table border="0">
         <tr><th>After deleting in Accounts</th></tr>
         <tr COLSPAN=2 BGCOLOR="#55ff00">
             <?php
-                accounts::printHeaders($all_accounts[0]);
+                accounts::printHeaders($findall_accounts[0]);
             ?>
         </tr>
 
     <?php 
-        accounts::printAll($all_accounts);
+        accounts::printAll($findall_accounts);
 }
 else
     echo "<h1>No record found or already the account has been deleted</h1>";
@@ -221,24 +221,24 @@ if($record != null){
         <tr><th>Before deleting in Todos</th></tr>
         <tr COLSPAN=2 BGCOLOR="#55ff00">
             <?php
-                todos::printHeaders($all_todos[0]);
+                todos::printHeaders($findall_todos[0]);
             ?>
         </tr>
 
     <?php 
-        todos::printAll($all_todos);
+        todos::printAll($findall_todos);
         $all_todos = todos::findAll();
     ?>
     <table border="0">
         <tr><th>After deleting in Todos</th></tr>
         <tr COLSPAN=2 BGCOLOR="#55ff00">
             <?php
-                todos::printHeaders($all_todos[0]);
+                todos::printHeaders($findall_todos[0]);
             ?>
         </tr>
 
     <?php 
-        todos::printAll($all_todos);
+        todos::printAll($findall_todos);
 }
 
 else
