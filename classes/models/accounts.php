@@ -1,6 +1,7 @@
 <?php
 
-class account extends model {
+namespace models{
+final class accounts extends \database\model {
     public $id;
     public $email;
     public $fname;
@@ -14,5 +15,6 @@ class account extends model {
     {
         $this->tableName = 'accounts';
     }
+}
 }
 ?>

@@ -1,6 +1,7 @@
 <?php
 
-class model {
+namespace database{
+abstract class model {
     protected $tableName;
 
     protected function getTableName(){
@@ -72,7 +73,7 @@ class model {
         
     }
 }
-
+}
 
 
 

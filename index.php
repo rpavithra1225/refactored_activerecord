@@ -10,12 +10,20 @@ error_reporting(E_ALL);
 //Class to load classes it finds the file when the progrm starts to fail for calling a missing class
 class Manage {
     public static function autoload($class) {
-        //you can put any file name or directory here
-        include $class . '.php';
-        //include_once 'db.php';
-        //include 'htmlTagsHelper.php';
-    }
-}
+      /*  $filename = "./classes/" . str_replace("\\", '/', $class) . ".php";
+        if (file_exists($filename)) {
+            include($filename);
+            if (class_exists($class)) {
+                return TRUE;
+            }
+        }
+        return FALSE;
+    }*/
+        include './models/'.$class . '.php';
+        include './collections/'.$class . '.php';
+        include './database/'.$class . '.php';
+            
+
 
 spl_autoload_register(array('Manage', 'autoload'));
 
@@ -85,7 +93,7 @@ $findone_todo = todos::findOne(1);
     todos::printOne($findone_todo);
 
 
-$new_account = new account();
+$new_account = new models\accounts();
 $new_account->id = '';
 $new_account->email = 'wer345@gmail.com';
 $new_account->fname = 'Welcome';
@@ -116,7 +124,7 @@ $findall_accounts = accounts::findAll();
  <hr>
 
 <?php
-$record = new todo();
+$record = new todos();
 $record->id = '';
 $record->owneremail = $new_account->email;
 $record->ownerid = $new_account->id;

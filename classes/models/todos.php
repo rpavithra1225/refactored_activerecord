@@ -1,8 +1,10 @@
 <?php
 
 
+namespace models{
+//use refactored_activerecord\models;
 
-class todo extends model {
+final class todos extends \database\model {
     public $id;
     public $owneremail;
     public $ownerid;
@@ -17,5 +19,6 @@ class todo extends model {
         $this->tableName = 'todos';
 	
     }
+}
 }
 ?>

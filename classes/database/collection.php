@@ -1,7 +1,9 @@
 <?php
+//namespace collections{
 
+//use refactored_activerecord\database;
 
-class collection {
+abstract class collection {
     static public function create() {
       $model = new static::$modelName;
 
@@ -63,7 +65,6 @@ class collection {
         echo "</table>";
     }
 }
-
 
 
 ?>
