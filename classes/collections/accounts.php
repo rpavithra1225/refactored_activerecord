@@ -1,8 +1,8 @@
 <?php
 
-//use refactored_activerecord\collections;
-
-final class accounts extends \database\collection {
+namespace collections;
+use database\collection;
+final class accounts extends collection {
     protected static $modelName = 'accounts';
 }
 

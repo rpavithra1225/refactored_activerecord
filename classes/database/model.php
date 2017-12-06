@@ -1,6 +1,6 @@
 <?php
 
-namespace database{
+namespace database;
 abstract class model {
     protected $tableName;
 
@@ -73,8 +73,5 @@ abstract class model {
         
     }
 }
-}
-
-
 
 ?>

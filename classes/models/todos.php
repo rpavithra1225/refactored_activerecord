@@ -1,7 +1,7 @@
 <?php
 
 
-namespace models{
+namespace models;
 //use refactored_activerecord\models;
 
 final class todos extends \database\model {
@@ -19,6 +19,6 @@ final class todos extends \database\model {
         $this->tableName = 'todos';
 	
     }
-}
+
 }
 ?>

@@ -2,7 +2,7 @@
 //namespace collections{
 
 //use refactored_activerecord\database;
-
+namespace database;
 abstract class collection {
     static public function create() {
       $model = new static::$modelName;
@@ -12,26 +12,28 @@ abstract class collection {
 
     static public function findAll() {
 
-        $db = dbConn::getConnection();
-        $tableName = get_called_class();
+        $db = \database\dbConn::getConnection();
+        $classArray = explode("\\", get_called_class());
+        $tableName = $classArray[1];
         $sql = 'SELECT * FROM ' . $tableName;
         $statement = $db->prepare($sql);
         $statement->execute();
         $class = static::$modelName;
-        $statement->setFetchMode(PDO::FETCH_CLASS, $class);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $class);
         $recordsSet =  $statement->fetchAll();
         return $recordsSet;
     }
 
     static public function findOne($id) {
 
-        $db = dbConn::getConnection();
-        $tableName = get_called_class();
+        $db = \database\dbConn::getConnection();
+        $classArray = explode("\\", get_called_class());
+        $tableName = $classArray[1];
         $sql = 'SELECT * FROM ' . $tableName . ' WHERE id =' . $id;
         $statement = $db->prepare($sql);
         $statement->execute();
         $class = static::$modelName;
-        $statement->setFetchMode(PDO::FETCH_CLASS, $class);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $class);
         $recordsSet =  $statement->fetchAll();
         if($recordsSet != null)
             return $recordsSet[0];
@@ -44,7 +46,6 @@ abstract class collection {
             echo "<th>".$key."</th>";
         }
     }
-
     static public function printAll($records){
         for($i=0;$i<count($records);$i++){
             echo "<tr>";
@@ -55,7 +56,6 @@ abstract class collection {
         }
         echo "</table>";
     }
-
     static public function printOne($record){
         echo "<tr>";
         foreach ($record as $key => $value) {
@@ -65,6 +65,5 @@ abstract class collection {
         echo "</table>";
     }
 }
-
 
 ?>

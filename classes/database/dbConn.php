@@ -1,6 +1,8 @@
 <?php
 
-namespace refactored_activerecord\database;
+namespace database;
+//use PDO;
+//use PDOException;
 
 //turn on debugging messages
 ini_set('display_errors', 'On');
@@ -18,11 +20,11 @@ class dbConn{
     private function __construct() {
         try {
             // assign PDO object to db variable
-            self::$db = new PDO( 'mysql:host=' . CONNECTION .';dbname=' . DATABASE, USERNAME, PASSWORD );
-            self::$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            self::$db = new \PDO( 'mysql:host=' . CONNECTION .';dbname=' . DATABASE, USERNAME, PASSWORD );
+            self::$db->setAttribute( \PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION );
             //echo "Connected successfully <br/>";
         }
-        catch (PDOException $e) {
+        catch (\PDOException $e) {
             //Output error - would normally log this to error file rather than output to user.
             echo "Connection Error: " . $e->getMessage(). "<br/>";
         }
